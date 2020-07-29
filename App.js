@@ -1,25 +1,19 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native';
 import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { HomeScreen } from './src/screens';
 
 function App() {
+    const Stack = createStackNavigator();
+
   return (
-      <View style={styles.container}>
-        <Text>Catching Money Game</Text>
-      </View>
+      <NavigationContainer>
+          <Stack.Navigator>
+              <Stack.Screen name="Home" component={HomeScreen} />
+          </Stack.Navigator>
+      </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-});
 
 export default App;
