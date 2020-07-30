@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { ScreenContainer, ScreenTitle } from '../../components';
+import { ScreenContainer, ScreenTitle, BlockButton } from '../../components';
 import SettingsItem from "../../components/SettingsItem";
 
 function SettingsScreen() {
@@ -57,6 +57,8 @@ function SettingsScreen() {
                     state={colorMode}
                     setSettingState={setColorMode}
                 />
+
+                <BlockButton func={() => console.log('Saved!')}>Save</BlockButton>
             </ScreenContainer>
         </ScrollView>
     );
