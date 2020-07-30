@@ -9,25 +9,23 @@ function SettingsItem({ title, settings, state, setSettingState }) {
         <View style={styles.item}>
             <Text style={styles.itemTitle}>{ title }</Text>
 
-            <SafeAreaView>
-                <FlatList
-                    data={settings}
-                    renderItem={({ item, index }) => (
-                        <View style={styles.settingItem} key={index}>
-                            <View style={styles.leftSettingItem}>
-                                <Text style={styles.settingTitle}>{ item.title }</Text>
-                                <Text style={styles.settingDescription}>{ item.description }</Text>
-                            </View>
-
-                            <View style={styles.rightSettingItem}>
-                                <TouchableOpacity style={styles.checkCircleOuter} onPress={() => setSettingState(index)}>
-                                    { state === index && <View style={styles.checkCircleInner} /> }
-                                </TouchableOpacity>
-                            </View>
+            <FlatList
+                data={settings}
+                renderItem={({ item, index }) => (
+                    <View style={styles.settingItem} key={index}>
+                        <View style={styles.leftSettingItem}>
+                            <Text style={styles.settingTitle}>{ item.title }</Text>
+                            <Text style={styles.settingDescription}>{ item.description }</Text>
                         </View>
-                    )}
-                />
-            </SafeAreaView>
+
+                        <View style={styles.rightSettingItem}>
+                            <TouchableOpacity style={styles.checkCircleOuter} onPress={() => setSettingState(index)}>
+                                { state === index && <View style={styles.checkCircleInner} /> }
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                )}
+            />
         </View>
     );
 }

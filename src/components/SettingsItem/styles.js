@@ -4,6 +4,8 @@ const styles = StyleSheet.create({
     item: {
         alignSelf: 'stretch',
         paddingVertical: 6,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(0, 0, 0, 0.05)',
     },
     itemTitle: {
         fontSize: 18,
