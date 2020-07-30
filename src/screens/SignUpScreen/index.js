@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, View } from 'react-native';
 import { ScreenContainer, ScreenTitle, BlockButton, Input } from '../../components';
 
 function SignUpScreen() {
@@ -10,6 +10,8 @@ function SignUpScreen() {
         <ScreenContainer>
             <KeyboardAvoidingView>
                 <ScreenTitle>Sign Up</ScreenTitle>
+
+                <View style={{ height: 10, }} />
 
                 <Input
                     placeholder="Email"
@@ -22,6 +24,8 @@ function SignUpScreen() {
                     value={password}
                     setValue={setPassword}
                 />
+
+                <View style={{ height: 10, }} />
 
                 <BlockButton
                     func={() => console.log("Success!")}
