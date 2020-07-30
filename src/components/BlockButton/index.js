@@ -5,7 +5,7 @@ import styles from './styles';
 
 function BlockButton({ children, func }) {
     return (
-        <TouchableOpacity style={styles.button} onPres={func}>
+        <TouchableOpacity style={styles.button} onPress={func}>
             <Text style={styles.buttonText}>{ children }</Text>
         </TouchableOpacity>
     );
