@@ -2,13 +2,21 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     item: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         alignSelf: 'stretch',
-        padding: 30,
-        backgroundColor: 'deeppink'
+        marginBottom: 10,
+        padding: 20,
+        backgroundColor: 'tomato',
+        borderRadius: 8,
+    },
+    leftScoreItem: {
+        alignItems: 'center',
     },
     scoreText: {
-        fontSize: 18,
-        fontWeight: '600',
+        fontSize: 22,
+        fontWeight: '700',
     },
     dateText: {
         fontSize: 12,

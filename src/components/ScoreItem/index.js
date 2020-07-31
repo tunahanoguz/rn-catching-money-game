@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from "./styles";
 
@@ -10,7 +10,11 @@ function ScoreItem({ navigation, scoreID, totalScore, date }) {
 
     return (
         <TouchableOpacity style={styles.item} onPress={goToScoreDetail}>
-            <Text style={styles.scoreText}>{totalScore}</Text>
+            <View style={styles.leftScoreItem}>
+                <Text>Total Score</Text>
+                <Text style={styles.scoreText}>{totalScore}</Text>
+            </View>
+
             <Text style={styles.dateText}>{date}</Text>
         </TouchableOpacity>
     );
