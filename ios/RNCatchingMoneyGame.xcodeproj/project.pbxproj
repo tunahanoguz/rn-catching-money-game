@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RNCatchingMoneyGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNCatchingMoneyGameTests.m */; };
 		0697E69724D32932006726F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0697E69624D32932006726F6 /* GoogleService-Info.plist */; };
+		06AC51D624D4549400CD08C9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06AC51D224D4549400CD08C9 /* Entypo.ttf */; };
+		06AC51D724D4549400CD08C9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06AC51D324D4549400CD08C9 /* Feather.ttf */; };
+		06AC51D824D4549400CD08C9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06AC51D424D4549400CD08C9 /* Ionicons.ttf */; };
+		06AC51D924D4549400CD08C9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06AC51D524D4549400CD08C9 /* FontAwesome.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -46,6 +50,10 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RNCatchingMoneyGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCatchingMoneyGameTests.m; sourceTree = "<group>"; };
 		0697E69624D32932006726F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06AC51D224D4549400CD08C9 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		06AC51D324D4549400CD08C9 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		06AC51D424D4549400CD08C9 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		06AC51D524D4549400CD08C9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		11102120F3165A3D4E769339 /* libPods-RNCatchingMoneyGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNCatchingMoneyGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* RNCatchingMoneyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNCatchingMoneyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNCatchingMoneyGame/AppDelegate.h; sourceTree = "<group>"; };
@@ -124,9 +132,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		06AC51D124D4542A00CD08C9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				06AC51D224D4549400CD08C9 /* Entypo.ttf */,
+				06AC51D324D4549400CD08C9 /* Feather.ttf */,
+				06AC51D524D4549400CD08C9 /* FontAwesome.ttf */,
+				06AC51D424D4549400CD08C9 /* Ionicons.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* RNCatchingMoneyGame */ = {
 			isa = PBXGroup;
 			children = (
+				06AC51D124D4542A00CD08C9 /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -344,6 +364,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				06AC51D924D4549400CD08C9 /* FontAwesome.ttf in Resources */,
+				06AC51D624D4549400CD08C9 /* Entypo.ttf in Resources */,
+				06AC51D824D4549400CD08C9 /* Ionicons.ttf in Resources */,
+				06AC51D724D4549400CD08C9 /* Feather.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0697E69724D32932006726F6 /* GoogleService-Info.plist in Resources */,
 			);
