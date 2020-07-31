@@ -7,11 +7,9 @@ function HomeNavigation() {
     const Stack = createStackNavigator();
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+        </Stack.Navigator>
     );
 }
 
