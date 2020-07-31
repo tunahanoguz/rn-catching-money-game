@@ -8,7 +8,7 @@ function TabNavigation() {
 
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={ HomeNavigation } options={{ tabBarIcon: ({ color, size }) => <Text>asdasdasd</Text> }} />
+            <Tab.Screen name="Home" component={ HomeNavigation } />
         </Tab.Navigator>
     );
 }
