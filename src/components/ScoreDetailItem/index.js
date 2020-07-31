@@ -3,18 +3,18 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from "./styles";
 
-function ScoreDetailItem({ scoreTitle, totalScore }) {
+function ScoreDetailItem({ scoreTitle, scoreDescription }) {
     return (
         <View style={styles.item}>
             <Text style={styles.itemTitle}>{ scoreTitle }</Text>
-            <Text>{ totalScore }</Text>
+            <Text>{ scoreDescription }</Text>
         </View>
     );
 }
 
 ScoreDetailItem.propTypes = {
     scoreTitle: PropTypes.string.isRequired,
-    totalScore: PropTypes.number.isRequired,
+    scoreDescription: PropTypes.string.isRequired,
 };
 
 export default ScoreDetailItem;
