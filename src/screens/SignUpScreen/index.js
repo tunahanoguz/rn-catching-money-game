@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, View, Alert } from 'react-native';
+import {KeyboardAvoidingView, View, Alert, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
-import { ScreenContainer, ScreenTitle, BlockButton, Input } from '../../components';
+import {ScreenContainer, ScreenTitle, BlockButton, Input, AuthScreenBottomText} from '../../components';
 
 GoogleSignin.configure({
     scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -84,6 +84,12 @@ function SignUpScreen({ navigation }) {
                 <View style={{ height: 20, }} />
 
                 <BlockButton func={signInWithGoogle}>Sign Up With Google</BlockButton>
+
+                <View style={{ height: 20, }} />
+
+                <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+                    <AuthScreenBottomText>Do you already have an account? Sign in.</AuthScreenBottomText>
+                </TouchableOpacity>
             </KeyboardAvoidingView>
         </ScreenContainer>
     );
