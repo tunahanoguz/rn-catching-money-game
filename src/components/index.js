@@ -7,3 +7,4 @@ export Input from './Input';
 export AuthScreenBottomText from './AuthScreenBottomText';
 export ScoreItem from './ScoreItem';
 export CustomStatusBar from './CustomStatusBar';
+export ScoreDetailItem from './ScoreDetailItem';
