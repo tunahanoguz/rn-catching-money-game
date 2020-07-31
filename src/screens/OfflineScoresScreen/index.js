@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import {FlatList, View} from 'react-native';
 import { ScoreItem } from '../../components';
 
 function OfflineScoresScreen() {
@@ -10,10 +10,12 @@ function OfflineScoresScreen() {
     ];
 
     return (
-        <FlatList
-            data={scores}
-            renderItem={({ item }) => <ScoreItem scoreID={item.id} totalScore={item.totalScore} date={item.date} />}
-        />
+        <View style={{ flex: 1, padding: 30, }}>
+            <FlatList
+                data={scores}
+                renderItem={({ item }) => <ScoreItem scoreID={item.id} totalScore={item.totalScore} date={item.date} />}
+            />
+        </View>
     );
 }
 

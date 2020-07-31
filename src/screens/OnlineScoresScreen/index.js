@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { ScoreItem } from '../../components';
+import { View, FlatList } from 'react-native';
+import { ScreenContainer, ScoreItem } from '../../components';
 
 function OnlineScoresScreen() {
     const scores = [
@@ -10,10 +10,12 @@ function OnlineScoresScreen() {
     ];
 
     return (
-        <FlatList
-            data={scores}
-            renderItem={({ item }) => <ScoreItem scoreID={item.id} totalScore={item.totalScore} date={item.date} />}
-        />
+        <View style={{ flex: 1, padding: 30, }}>
+            <FlatList
+                data={scores}
+                renderItem={({ item }) => <ScoreItem scoreID={item.id} totalScore={item.totalScore} date={item.date} />}
+            />
+        </View>
     );
 }
 
