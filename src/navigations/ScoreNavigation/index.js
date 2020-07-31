@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ScoresScreen } from '../../screens';
+import { ScoresScreen, ScoreDetailScreen } from '../../screens';
 
 function ScoreNavigation() {
     const Stack = createStackNavigator();
@@ -8,6 +8,7 @@ function ScoreNavigation() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="ScoresScreen" component={ScoresScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="ScoreDetailScreen" component={ScoreDetailScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
