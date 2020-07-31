@@ -1,9 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { useNavigation } from '@react-navigation/native';
 import styles from "./styles";
 
-function ScoreItem({ navigation, scoreID, totalScore, date }) {
+function ScoreItem({ scoreID, totalScore, date }) {
+    const navigation = useNavigation();
+
     function goToScoreDetail() {
         navigation.navigate('ScoreDetailScreen', { id: scoreID });
     }
