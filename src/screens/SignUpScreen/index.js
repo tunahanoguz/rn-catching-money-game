@@ -24,8 +24,6 @@ function SignUpScreen({ navigation }) {
                         username,
                         email,
                         createdAt: new Date(),
-                        scores: [],
-                        cups: [],
                     };
                     const userCollection = firestore().collection('Users');
                     await userCollection.add(userData);
