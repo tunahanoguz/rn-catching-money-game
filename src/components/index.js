@@ -1,6 +1,7 @@
 export HomeButton from './HomeButton';
 export HomeButtonContainer from './HomeButtonContainer';
 export ScreenContainer from './ScreenContainer';
+export ScreenHeader from './ScreenHeader';
 export ScreenTitle from './ScreenTitle';
 export BlockButton from './BlockButton';
 export Input from './Input';
