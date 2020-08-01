@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import { saveGame } from './functions';
 import styles from "./styles";
 
 function GameScreen() {
@@ -34,6 +35,17 @@ function GameScreen() {
 
     useEffect(() => {
         if (totalTime === 0) {
+            saveGame({
+                score,
+                tlScore,
+                dolarScore,
+                euroScore,
+                poundScore,
+                goldScore,
+                bitcoinScore,
+                etheriumScore,
+                dodgeScore
+            });
             Alert.alert(
                 "Game is over!",
                 alertMessage,
