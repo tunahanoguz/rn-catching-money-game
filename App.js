@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { TabNavigation } from './src/navigations';
+import auth from '@react-native-firebase/auth';
+import { AuthNavigation, TabNavigation } from './src/navigations';
 
 function App() {
-  return (
-      <NavigationContainer>
-          <TabNavigation />
-      </NavigationContainer>
-  );
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        return auth().onAuthStateChanged(onAuthStateChanged);
+    }, []);
+
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <AuthNavigation />
+            </NavigationContainer>
+        );
+    }
+
+    return (
+        <NavigationContainer>
+            <TabNavigation />
+        </NavigationContainer>
+    );
 }
 
 export default App;
