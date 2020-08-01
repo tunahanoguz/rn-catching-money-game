@@ -5,8 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TabNavigation } from './src/navigations';
 
 function App() {
-    const Stack = createStackNavigator();
-
   return (
       <NavigationContainer>
           <TabNavigation />
