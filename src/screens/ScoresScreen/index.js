@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import { View, Dimensions, StatusBar } from 'react-native';
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useIsFocused } from '@react-navigation/native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import OnlineScoresScreen from '../OnlineScoresScreen';
 import OfflineScoresScreen from '../OfflineScoresScreen';
@@ -30,9 +30,13 @@ function ScoresScreen() {
         );
     }
 
+    const isFocused = useIsFocused();
+
     return (
         <View style={{ flex: 1, }}>
-            <CustomStatusBar barStyle='light-content' backgroundColor='black' />
+            {isFocused && (
+                <CustomStatusBar barStyle='light-content' backgroundColor='black' />
+            )}
 
             <TabView
                 navigationState={{ index, routes }}
