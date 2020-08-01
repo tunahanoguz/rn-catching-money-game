@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {KeyboardAvoidingView, View, Alert, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
 import {ScreenContainer, ScreenTitle, BlockButton, Input, AuthScreenBottomText} from '../../components';
 
@@ -10,12 +11,28 @@ GoogleSignin.configure({
 });
 
 function SignUpScreen({ navigation }) {
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function signUp() {
         auth()
             .createUserWithEmailAndPassword(email, password)
+            .then(async () => {
+                try {
+                    const userData = {
+                        username,
+                        email,
+                        createdAt: new Date(),
+                        scores: [],
+                        cups: [],
+                    };
+                    const userCollection = firestore().collection('Users');
+                    await userCollection.add(userData);
+                } catch (error) {
+                    Alert.alert('Registration Failed!', error.message);
+                }
+            })
             .then(() => {
                 navigation.navigate('HomeScreen');
             })
@@ -58,6 +75,12 @@ function SignUpScreen({ navigation }) {
                 <ScreenTitle>Sign Up</ScreenTitle>
 
                 <View style={{ height: 10, }} />
+
+                <Input
+                    placeholder="Username"
+                    value={username}
+                    setValue={setUsername}
+                />
 
                 <Input
                     placeholder="Email"
