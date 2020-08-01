@@ -1,12 +1,19 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import styles from "./styles";
 
-function RatingItem({ playerUsername, totalScore, date, bgColor }) {
+function RatingItem({ ratingID, playerUsername, totalScore, date, bgColor }) {
+    const navigation = useNavigation();
+
+    function goToRatingDetail() {
+        navigation.navigate('RatingDetailScreen', { id: ratingID });
+    }
+
     return (
-        <TouchableOpacity style={[styles.item, { backgroundColor: bgColor }]}>
+        <TouchableOpacity style={[styles.item, { backgroundColor: bgColor }]} onPress={goToRatingDetail}>
             <View style={styles.itemTop}>
                 <Icon name='user' />
                 <Text style={styles.playerUsername}>{ playerUsername }</Text>
@@ -28,6 +35,7 @@ function RatingItem({ playerUsername, totalScore, date, bgColor }) {
 }
 
 RatingItem.propTypes = {
+    ratingID: PropTypes.string.isRequired,
     playerUsername: PropTypes.string.isRequired,
     totalScore: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
