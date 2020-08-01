@@ -1,7 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {HomeScreen, ScoresScreen} from '../../screens';
+import { HomeScreen, GameScreen } from '../../screens';
 
 function HomeNavigation() {
     const Stack = createStackNavigator();
@@ -9,6 +8,7 @@ function HomeNavigation() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GameScreen" component={GameScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
