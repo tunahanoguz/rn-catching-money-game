@@ -1,5 +1,3 @@
-export NewGameButton from './NewGameButton';
-export ShowPlayerRankingButton from './ShowPlayerRankingButton';
 export HomeButton from './HomeButton';
 export ScreenContainer from './ScreenContainer';
 export ScreenTitle from './ScreenTitle';
