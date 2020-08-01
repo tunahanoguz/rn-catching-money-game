@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StatusBar } from 'react-native';
-import { HomeButton, HomeButtonContainer } from "../../components";
+import auth from '@react-native-firebase/auth';
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import { HomeButton, HomeButtonContainer } from "../../components";
 
 function Home() {
     const statusBarHeight = getStatusBarHeight();
@@ -12,7 +13,7 @@ function Home() {
 
             <View style={{ flex: 1, marginTop: statusBarHeight, padding: 30, flexDirection: 'column', justifyContent: 'space-between', }}>
                 <HomeButtonContainer>
-                    <HomeButton text="New Game" func={() => console.log("New game!")} />
+                    <HomeButton text="New Game" func={() => auth().signOut()} />
                 </HomeButtonContainer>
 
                 <HomeButtonContainer>
