@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
-import { ScreenContainer, ScreenTitle, ScoreDetailItem } from '../../components';
+import { ScreenContainer, ScreenHeader, ScreenTitle, ScoreDetailItem } from '../../components';
 
 function ScoreDetailScreen({ route, navigation }) {
     const scoreID = route.params.id;
@@ -10,7 +10,8 @@ function ScoreDetailScreen({ route, navigation }) {
 
     return (
         <ScreenContainer>
-            <ScreenTitle>Score Detail</ScreenTitle>
+            <ScreenHeader title='Score Detail' />
+            {/*<ScreenTitle>Score Detail</ScreenTitle>*/}
 
             <View style={{ height: 20, }}/>
 
