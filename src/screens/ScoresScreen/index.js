@@ -46,7 +46,7 @@ function ScoresScreen() {
     }, []);
 
     async function getScores() {
-        firestore().collection('Scores').get()
+        firestore().collection('Scores').orderBy('scores.score', 'desc').get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     const data = doc.data();
