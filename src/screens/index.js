@@ -5,3 +5,4 @@ export SignUpScreen from './SignUpScreen';
 export SignInScreen from './SignInScreen';
 export ScoresScreen from './ScoresScreen';
 export ScoreDetailScreen from './ScoreDetailScreen';
+export RatingsScreen from './RatingsScreen';
