@@ -2,13 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     item: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         alignSelf: 'stretch',
-        paddingVertical: 14,
-        borderBottomWidth: 1,
-        borderBottomColor: 'rgba(0, 0, 0, 0.05)'
+        marginBottom: 10,
+        padding: 20,
+        borderRadius: 8,
+    },
+    itemTop: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    playerUsername: {
+        fontStyle: 'italic',
+        marginLeft: 2,
     },
     itemBottom: {
         flexDirection: 'row',
