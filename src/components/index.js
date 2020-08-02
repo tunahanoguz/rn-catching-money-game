@@ -10,3 +10,4 @@ export ScoreItem from './ScoreItem';
 export CustomStatusBar from './CustomStatusBar';
 export ScoreDetailItem from './ScoreDetailItem';
 export RatingItem from './RatingItem';
+export SettingsItem from './SettingsItem';
