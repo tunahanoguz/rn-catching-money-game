@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { saveGame } from './functions';
 import styles from "./styles";
 
-function GameScreen() {
+function GameScreen({ navigation }) {
     const [totalTime, setTotalTime] = useState(10);
     const [score, setScore] = useState(0);
     const [bitcoinScore, setBitcoinScore] = useState(0);
@@ -14,8 +14,8 @@ function GameScreen() {
     const [goldScore, setGoldScore] = useState(0);
     const [poundScore, setPoundScore] = useState(0);
     const [tlScore, setTLScore] = useState(0);
-    const [moneyNumber, setMoneyNumber] = useState(Math.floor(Math.random() * 8));
-    const [placeNumber, setPlaceNumber] = useState(Math.floor(Math.random() * 12));
+    const [moneyNumber, setMoneyNumber] = useState();
+    const [placeNumber, setPlaceNumber] = useState();
     const money = [
         require('../../assets/images/tl.png'),
         require('../../assets/images/dolar.png'),
@@ -30,7 +30,9 @@ function GameScreen() {
     const alertMessage = `The game is over. You have caught ${score} coins in total and ${tlScore} Turkish Lira, ${dolarScore} Dolar, ${euroScore} Euro, ${poundScore} Pound, ${goldScore} Gold, ${bitcoinScore} Bitcoin, ${etheriumScore} Etherium, ${dodgeScore} Dodge.`;
 
     useEffect(() => {
-        startGame();
+        setTimeout(() => {
+            return startGame();
+        }, 3000)
     }, []);
 
     useEffect(() => {
@@ -52,7 +54,7 @@ function GameScreen() {
                 [
                     {
                         text: 'Finish',
-                        onPress: () => console.log("Bitir!"),
+                        onPress: () => finishGame(),
                     },
                     {
                         text: 'New Game',
@@ -98,7 +100,7 @@ function GameScreen() {
     }
 
     function finishGame() {
-        console.log("Finish game!");
+        navigation.navigate('Scores', { screen: 'ScoresScreen' });
     }
 
     function newGame() {
