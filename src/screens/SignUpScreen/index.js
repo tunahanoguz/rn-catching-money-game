@@ -24,6 +24,9 @@ function SignUpScreen({ navigation }) {
                         username,
                         email,
                         createdAt: new Date(),
+                        gameType: 'Online',
+                        gameLevel: 'Medium',
+                        colorMode: 'Light Mode',
                     };
                     const userCollection = firestore().collection('Users');
                     await userCollection.add(userData);
