@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {FlatList, Text, View} from 'react-native';
-import PropTypes from 'prop-types';
 import auth from '@react-native-firebase/auth';
 import firestore from "@react-native-firebase/firestore";
 import { ScoreItem } from '../../components';
@@ -46,9 +45,5 @@ function OfflineScoresScreen() {
         </View>
     );
 }
-
-OfflineScoresScreen.propTypes = {
-    scores: PropTypes.array.isRequired,
-};
 
 export default OfflineScoresScreen;

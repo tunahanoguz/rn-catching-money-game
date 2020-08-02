@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import firestore from "@react-native-firebase/firestore";
 import { ScoreItem } from '../../components';
 import auth from "@react-native-firebase/auth";
@@ -46,9 +45,5 @@ function OnlineScoresScreen() {
         </View>
     );
 }
-
-OnlineScoresScreen.propTypes = {
-    scores: PropTypes.array.isRequired,
-};
 
 export default OnlineScoresScreen;
