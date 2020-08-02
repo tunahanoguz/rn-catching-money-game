@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList } from 'react-native';
+import firestore from "@react-native-firebase/firestore";
+import moment from 'moment';
 import { ScreenContainer, ScreenTitle, RatingItem, BlockButton } from '../../components';
 
 function RatingsScreen() {
-    const ratings = [
-        { ratingID: 'asd', playerUsername: 'tunahanoguz' , totalScore: 500 , date: '10 Ağustos 2020' },
-        { ratingID: 'asda', playerUsername: 'johndoe' , totalScore: 100 , date: '11 Ağustos 2020' },
-        { ratingID: 'asds', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdadsasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdasdasdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdasdasdasdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdadsasdasdadsasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdadsadsasdasdasdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-        { ratingID: 'asdasdadsadsadsasdasdasdasd', playerUsername: 'exampleusername' , totalScore: 300 , date: '12 Ağustos 2020' },
-    ];
+    const [scores, setScores] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        getScores();
+    }, []);
+
+    async function getScores() {
+        firestore().collection('Scores')
+            .where('gameType', '==', 0)
+            .orderBy('scores.score', 'desc').get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const score = {
+                        id: doc.id,
+                        ...data
+                    };
+                    setScores(sc => [...sc, score]);
+
+                    firestore().collection('Users')
+                        .where('id', '==', score.userID)
+                        .get()
+                        .then(scoreSnapshot => {
+                            const scoreDoc = scoreSnapshot.docs[0];
+                            const userData = scoreDoc.data();
+
+                            setUsers(us => [...us, userData]);
+                        })
+                });
+            })
+            .catch(error => console.log(error));
+    }
 
     return (
         <ScreenContainer>
@@ -24,10 +45,12 @@ function RatingsScreen() {
 
             <View style={{ height: 10, }} />
 
-            <FlatList
-                data={ratings}
-                renderItem={({ item }) => <RatingItem key={item.ratingID} ratingID={item.ratingID} playerUsername={item.playerUsername} totalScore={item.totalScore} date={item.date} />}
-            />
+            {scores.length !== 0 && users.length !== 0 && (
+                <FlatList
+                    data={scores}
+                    renderItem={({ item, index }) => <RatingItem key={item.id} ratingID={item.id} playerUsername={users[index]?.username} totalScore={item.scores.score} date={moment(item.data).format('LL')} />}
+                />
+            )}
 
             <View style={{ height: 10, }} />
 
