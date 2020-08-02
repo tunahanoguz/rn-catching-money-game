@@ -14,7 +14,7 @@ function OnlineScoresScreen() {
     async function getScores() {
         const userID = auth().currentUser.uid;
         firestore().collection('Scores')
-            .where('gameType', '==', 'Online')
+            .where('gameType', '==', 0)
             .where('userID', '==', userID)
             .orderBy('scores.score', 'desc').get()
             .then(querySnapshot => {
