@@ -1,12 +1,62 @@
-import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
-import { ScreenContainer, ScreenTitle, BlockButton } from '../../components';
-import SettingsItem from "../../components/SettingsItem";
+import React, { useState, useEffect } from 'react';
+import { ScrollView, Alert } from 'react-native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { ScreenContainer, ScreenTitle, BlockButton, SettingsItem } from '../../components';
 
 function SettingsScreen() {
     const [gameType, setGameType] = useState(0);
     const [gameLevel, setGameLevel] = useState(0);
     const [colorMode, setColorMode] = useState(0);
+
+    const userEmail = auth().currentUser.email;
+
+    useEffect(() => {
+        firestore().collection('Users')
+            .where('email', '==', userEmail)
+            .get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const userGameType = data.gameType;
+                    const userGameLevel = data.gameLevel;
+                    const userColorMode = data.colorMode;
+
+                    setGameType(userGameType === 'Online' ? 0 : 1);
+
+                    if (userGameLevel === 'Very Easy') {
+                        setGameLevel(0);
+                    } else if (userGameLevel === 'Easy') {
+                        setGameLevel(1);
+                    } else if (userGameLevel === 'Medium') {
+                        setGameLevel(2);
+                    } else if (userGameLevel === 'Hard') {
+                        setGameLevel(3);
+                    } else {
+                        setGameLevel(4);
+                    }
+
+
+                    setColorMode(userColorMode === 'Light Mode' ? 0 : 1);
+                });
+            })
+            .catch(error => console.log(error));
+    }, []);
+
+    function saveSettings() {
+        const scoreRef = firestore().collection('Users').where('email', '==', userEmail).limit(1);
+        scoreRef.get().then(userDocs => {
+            const userDoc = userDocs.docs[0];
+            userDoc.ref.update({
+                gameType,
+                gameLevel,
+                colorMode,
+            })
+                .then(() => {
+                    Alert.alert('Successful!', 'Settings have been successfully saved.');
+                });
+        });
+    }
 
     return (
         <ScrollView>
@@ -58,7 +108,7 @@ function SettingsScreen() {
                     setSettingState={setColorMode}
                 />
 
-                <BlockButton func={() => console.log('Saved!')}>Save</BlockButton>
+                <BlockButton func={saveSettings}>Save</BlockButton>
             </ScreenContainer>
         </ScrollView>
     );
