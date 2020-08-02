@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {FlatList, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
-import { ScoreItem } from '../../components';
+import auth from '@react-native-firebase/auth';
 import firestore from "@react-native-firebase/firestore";
+import { ScoreItem } from '../../components';
 
 function OfflineScoresScreen() {
     const [scores, setScores] = useState([]);
@@ -12,8 +13,10 @@ function OfflineScoresScreen() {
     }, []);
 
     async function getScores() {
+        const userID = auth().currentUser.uid;
         firestore().collection('Scores')
             .where('gameType', '==', 'Offline')
+            .where('userID', '==', userID)
             .orderBy('scores.score', 'desc').get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
