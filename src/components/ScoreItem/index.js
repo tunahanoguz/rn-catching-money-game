@@ -12,6 +12,7 @@ function ScoreItem({ scoreID, totalScore, date }) {
         navigation.navigate('ScoreDetailScreen', { id: scoreID });
     }
 
+    console.log(typeof date);
     const trimmedDate = moment(date).format('LL')
 
     return (
@@ -29,7 +30,7 @@ function ScoreItem({ scoreID, totalScore, date }) {
 ScoreItem.propTypes = {
     scoreID: PropTypes.string.isRequired,
     totalScore: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
+    date: PropTypes.object.isRequired,
 };
 
 export default ScoreItem;
