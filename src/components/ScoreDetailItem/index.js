@@ -14,7 +14,7 @@ function ScoreDetailItem({ scoreTitle, scoreDescription }) {
 
 ScoreDetailItem.propTypes = {
     scoreTitle: PropTypes.string.isRequired,
-    scoreDescription: PropTypes.string.isRequired,
+    scoreDescription: PropTypes.any.isRequired,
 };
 
 export default ScoreDetailItem;
