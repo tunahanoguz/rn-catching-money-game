@@ -15,7 +15,9 @@ function RatingsScreen() {
     async function getScores() {
         firestore().collection('Scores')
             .where('gameType', '==', 0)
-            .orderBy('scores.score', 'desc').get()
+            .orderBy('scores.score', 'desc')
+            .limit(5)
+            .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     const data = doc.data();
