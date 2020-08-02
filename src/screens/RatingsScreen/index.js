@@ -50,7 +50,7 @@ function RatingsScreen() {
             {scores.length !== 0 && users.length !== 0 && (
                 <FlatList
                     data={scores}
-                    renderItem={({ item, index }) => <RatingItem key={item.id} ratingID={item.id} playerUsername={users[index]?.username} totalScore={item.scores.score} date={moment(item.data).format('LL')} />}
+                    renderItem={({ item, index }) => <RatingItem key={item.id} index={index} ratingID={item.id} playerUsername={users[index]?.username} totalScore={item.scores.score} date={moment(item.data).format('LL')} />}
                 />
             )}
 

@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import styles from "./styles";
 
-function RatingItem({ ratingID, playerUsername, totalScore, date, bgColor }) {
+function RatingItem({ index, ratingID, playerUsername, totalScore, date, bgColor }) {
     const navigation = useNavigation();
 
     function goToRatingDetail() {
-        navigation.navigate('RatingDetailScreen', { id: ratingID });
+        navigation.navigate('RatingDetailScreen', { id: ratingID, index });
     }
 
     return (
@@ -35,6 +35,7 @@ function RatingItem({ ratingID, playerUsername, totalScore, date, bgColor }) {
 }
 
 RatingItem.propTypes = {
+    index: PropTypes.number.isRequired,
     ratingID: PropTypes.string.isRequired,
     playerUsername: PropTypes.string.isRequired,
     totalScore: PropTypes.number.isRequired,
