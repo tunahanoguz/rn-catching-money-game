@@ -32,7 +32,7 @@ function SignInScreen({ navigation }) {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('Home', { screen: 'HomeScreen' });
       })
       .catch((error) => Alert.alert('Registration Failed!', error.message));
   }
