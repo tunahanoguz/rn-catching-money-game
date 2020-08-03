@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { ScoreItem } from '../../components';
 import auth from '@react-native-firebase/auth';
@@ -29,7 +29,9 @@ function OnlineScoresScreen() {
           setScores((sc) => [...sc, score]);
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        Alert.alert('Scoress cannot be fetched!', error.message),
+      );
   }
 
   return (

@@ -11,7 +11,6 @@ function OfflineScoresScreen() {
   useEffect(() => {
     getGames(userID).then((games) => {
       games.map((game) => {
-        console.log(game.id);
         setScores((score) => [...score, game]);
       });
     });
