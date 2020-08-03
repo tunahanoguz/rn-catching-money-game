@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Dimensions, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { View, Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import firestore from '@react-native-firebase/firestore';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import OnlineScoresScreen from '../OnlineScoresScreen';
 import OfflineScoresScreen from '../OfflineScoresScreen';
