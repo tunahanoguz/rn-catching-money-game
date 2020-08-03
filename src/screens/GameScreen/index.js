@@ -127,7 +127,7 @@ function GameScreen({ navigation }) {
   }
 
   function finishGame() {
-    navigation.navigate('Scores', { screen: 'ScoresScreen' });
+    navigation.pop();
   }
 
   function newGame() {
