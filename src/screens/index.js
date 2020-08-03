@@ -6,4 +6,5 @@ export SignInScreen from './SignInScreen';
 export ScoresScreen from './ScoresScreen';
 export ScoreDetailScreen from './ScoreDetailScreen';
 export RatingsScreen from './RatingsScreen';
+export AllRatingsScreen from './AllRatingsScreen';
 export RatingDetailScreen from './RatingDetailScreen';

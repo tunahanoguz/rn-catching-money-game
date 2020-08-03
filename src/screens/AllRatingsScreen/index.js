@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import firestore from "@react-native-firebase/firestore";
 import moment from 'moment';
-import { ScreenContainer, ScreenTitle, RatingItem, BlockButton } from '../../components';
+import { ScreenContainer, RatingItem } from '../../components';
 
-function RatingsScreen({ navigation }) {
+function RatingsScreen() {
     const [scores, setScores] = useState([]);
     const [users, setUsers] = useState([]);
 
@@ -16,7 +16,6 @@ function RatingsScreen({ navigation }) {
         firestore().collection('Scores')
             .where('gameType', '==', 0)
             .orderBy('scores.score', 'desc')
-            .limit(5)
             .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
@@ -41,26 +40,14 @@ function RatingsScreen({ navigation }) {
             .catch(error => console.log(error));
     }
 
-    function goToAllRatings() {
-        navigation.navigate('AllRatingsScreen');
-    }
-
     return (
         <ScreenContainer>
-            <ScreenTitle>Ratings</ScreenTitle>
-
-            <View style={{ height: 10, }} />
-
             {scores.length !== 0 && users.length !== 0 && (
                 <FlatList
                     data={scores}
                     renderItem={({ item, index }) => <RatingItem key={item.id} index={index} ratingID={item.id} playerUsername={users[index]?.username} totalScore={item.scores.score} date={moment(item.data).format('LL')} />}
                 />
             )}
-
-            <View style={{ height: 10, }} />
-
-            <BlockButton func={goToAllRatings}>See More</BlockButton>
         </ScreenContainer>
     );
 }
