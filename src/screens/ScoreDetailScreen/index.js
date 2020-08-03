@@ -11,7 +11,7 @@ import { getGameByID } from '../../db';
 
 function ScoreDetailScreen({ route }) {
   const scoreID = route.params.id;
-  const scoreType = route.params.type;
+  const scoreType = route.params.scoreType;
 
   const [score, setScore] = useState({});
 
@@ -24,7 +24,6 @@ function ScoreDetailScreen({ route }) {
       });
     } else {
       getGameByID(scoreID).then((game) => {
-        console.log(game);
         setScore(game);
       });
     }
