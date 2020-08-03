@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { View } from 'react-native';
 import firestore from "@react-native-firebase/firestore";
 import moment from 'moment';
 import { ScreenContainer, ScreenHeader, ScoreDetailItem } from '../../components';
+import { getGameByID } from '../../db';
 
 function ScoreDetailScreen({ route }) {
     const scoreID = route.params.id;
+    const scoreType = route.params.type;
+
     const [score, setScore] = useState({});
 
     useEffect(() => {
-        const scoreRef = firestore().collection('Scores').doc(scoreID);
-        scoreRef.get().then(doc => {
-            const data = doc.data();
-            setScore(data);
-        })
+        if (scoreType === 0) {
+            const scoreRef = firestore().collection('Scores').doc(scoreID);
+            scoreRef.get().then(doc => {
+                const data = doc.data();
+                setScore(data);
+            });
+        } else {
+            getGameByID(scoreID)
+                .then(game => {
+                    console.log(game);
+                    setScore(game);
+                });
+        }
     }, []);
 
     const allScores = score.scores;
