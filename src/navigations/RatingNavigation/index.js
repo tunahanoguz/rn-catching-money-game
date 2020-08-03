@@ -1,17 +1,33 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { RatingsScreen, AllRatingsScreen, RatingDetailScreen } from '../../screens';
+import {
+  RatingsScreen,
+  AllRatingsScreen,
+  RatingDetailScreen,
+} from '../../screens';
 
 function RatingNavigation() {
-    const Stack = createStackNavigator();
+  const Stack = createStackNavigator();
 
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="RatingsScreen" component={RatingsScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="AllRatingsScreen" component={AllRatingsScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="RatingDetailScreen" component={RatingDetailScreen} options={{ headerShown: false }} />
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="RatingsScreen"
+        component={RatingsScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AllRatingsScreen"
+        component={AllRatingsScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RatingDetailScreen"
+        component={RatingDetailScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
 }
 
 export default RatingNavigation;

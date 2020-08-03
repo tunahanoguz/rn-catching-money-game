@@ -5,33 +5,33 @@ import auth from '@react-native-firebase/auth';
 import { AuthNavigation, TabNavigation } from './src/navigations';
 
 function App() {
-    const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
 
-    function onAuthStateChanged(user) {
-        setUser(user);
-        if (initializing) setInitializing(false);
-    }
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
-    useEffect(() => {
-        return auth().onAuthStateChanged(onAuthStateChanged);
-    }, []);
+  useEffect(() => {
+    return auth().onAuthStateChanged(onAuthStateChanged);
+  }, []);
 
-    if (initializing) return null;
+  if (initializing) return null;
 
-    if (!user) {
-        return (
-            <NavigationContainer>
-                <AuthNavigation />
-            </NavigationContainer>
-        );
-    }
-
+  if (!user) {
     return (
-        <NavigationContainer>
-            <TabNavigation />
-        </NavigationContainer>
+      <NavigationContainer>
+        <AuthNavigation />
+      </NavigationContainer>
     );
+  }
+
+  return (
+    <NavigationContainer>
+      <TabNavigation />
+    </NavigationContainer>
+  );
 }
 
 export default App;
