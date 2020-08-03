@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   moneyColumn: {
     width: 100,
     height: 100,
-    marginRight: 30,
   },
   moneyImage: {
     width: 100,
