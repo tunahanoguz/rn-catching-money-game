@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
-import { saveGame } from './functions';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
+import { saveOnlineGame, saveOfflineGame } from './functions';
 import styles from "./styles";
 
 function GameScreen({ navigation }) {
@@ -32,22 +34,51 @@ function GameScreen({ navigation }) {
     useEffect(() => {
         setTimeout(() => {
             return startGame();
-        }, 3000)
+        }, 3000);
     }, []);
 
     useEffect(() => {
         if (totalTime === 0) {
-            saveGame({
-                score,
-                tlScore,
-                dolarScore,
-                euroScore,
-                poundScore,
-                goldScore,
-                bitcoinScore,
-                etheriumScore,
-                dodgeScore
-            });
+            const userEmail = auth().currentUser.email;
+            const usersCollection = firestore().collection('Users');
+
+            usersCollection
+                .where('email', '==', userEmail)
+                .get()
+                .then(userDocs => {
+                    const userDoc = userDocs.docs[0];
+                    const userData = userDoc.data();
+
+                    const userGameType = userData.gameType;
+
+                    if (userGameType === 0) {
+                        saveOnlineGame({
+                            score,
+                            tlScore,
+                            dolarScore,
+                            euroScore,
+                            poundScore,
+                            goldScore,
+                            bitcoinScore,
+                            etheriumScore,
+                            dodgeScore
+                        });
+                    } else {
+                        saveOfflineGame({
+                            score,
+                            tlScore,
+                            dolarScore,
+                            euroScore,
+                            poundScore,
+                            goldScore,
+                            bitcoinScore,
+                            etheriumScore,
+                            dodgeScore
+                        });
+                    }
+                });
+
+
             Alert.alert(
                 "Game is over!",
                 alertMessage,
@@ -147,7 +178,6 @@ function GameScreen({ navigation }) {
                         </TouchableOpacity>
                     )}
                 </View>
-
 
                 <View style={styles.moneyColumn}>
                     {placeNumber === 2 && (
