@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import moment from 'moment';
 import styles from './styles';
 
-function ScoreItem({ scoreID, totalScore, date }) {
+function ScoreItem({ scoreID, scoreType, totalScore, date }) {
   const navigation = useNavigation();
 
   function goToScoreDetail() {
-    navigation.navigate('ScoreDetailScreen', { id: scoreID });
+    navigation.navigate('ScoreDetailScreen', { id: scoreID, scoreType });
   }
 
   const trimmedDate = moment(date).format('LL');
@@ -28,6 +28,7 @@ function ScoreItem({ scoreID, totalScore, date }) {
 
 ScoreItem.propTypes = {
   scoreID: PropTypes.any.isRequired,
+  scoreType: PropTypes.number.isRequired,
   totalScore: PropTypes.number.isRequired,
   date: PropTypes.object.isRequired,
 };

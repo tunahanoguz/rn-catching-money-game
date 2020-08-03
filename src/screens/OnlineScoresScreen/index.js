@@ -40,6 +40,7 @@ function OnlineScoresScreen() {
           renderItem={({ item }) => (
             <ScoreItem
               scoreID={item.id}
+              scoreType={0}
               totalScore={item.scores.score}
               date={item.date}
             />

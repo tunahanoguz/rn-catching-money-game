@@ -25,6 +25,7 @@ function OfflineScoresScreen() {
           renderItem={({ item }) => (
             <ScoreItem
               scoreID={item.id}
+              scoreType={1}
               totalScore={item.scores.score}
               date={item.date}
             />
