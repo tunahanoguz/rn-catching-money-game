@@ -11,16 +11,25 @@ import {
 function TabNavigation() {
   const Tab = createBottomTabNavigator();
 
+  const getTabBarVisibility = (route) => {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : '';
+
+    return routeName !== 'GameScreen';
+  };
+
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
         component={HomeNavigation}
-        options={{
+        options={({ route }) => ({
           tabBarIcon: ({ color, size }) => (
             <Icon name="home" color={color} size={size} />
           ),
-        }}
+          tabBarVisible: getTabBarVisibility(route),
+        })}
       />
 
       <Tab.Screen
