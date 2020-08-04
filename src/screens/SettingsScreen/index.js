@@ -12,7 +12,7 @@ import {
 function SettingsScreen() {
   const [gameType, setGameType] = useState(0);
   const [gameLevel, setGameLevel] = useState(0);
-  const [colorMode, setColorMode] = useState(0);
+  // const [colorMode, setColorMode] = useState(0);
 
   const userEmail = auth().currentUser.email;
 
@@ -26,23 +26,24 @@ function SettingsScreen() {
           const data = doc.data();
           const userGameType = data.gameType;
           const userGameLevel = data.gameLevel;
-          const userColorMode = data.colorMode;
+          // const userColorMode = data.colorMode;
 
-          setGameType(userGameType === 'Online' ? 0 : 1);
+          setGameType(userGameType);
+          setGameLevel(userGameLevel);
 
-          if (userGameLevel === 'Very Easy') {
-            setGameLevel(0);
-          } else if (userGameLevel === 'Easy') {
-            setGameLevel(1);
-          } else if (userGameLevel === 'Medium') {
-            setGameLevel(2);
-          } else if (userGameLevel === 'Hard') {
-            setGameLevel(3);
-          } else {
-            setGameLevel(4);
-          }
+          // if (userGameLevel === 'Very Easy') {
+          //   setGameLevel(0);
+          // } else if (userGameLevel === 'Easy') {
+          //   setGameLevel(1);
+          // } else if (userGameLevel === 'Medium') {
+          //   setGameLevel(2);
+          // } else if (userGameLevel === 'Hard') {
+          //   setGameLevel(3);
+          // } else {
+          //   setGameLevel(4);
+          // }
 
-          setColorMode(userColorMode === 'Light Mode' ? 0 : 1);
+          // setColorMode(userColorMode === 'Light Mode' ? 0 : 1);
         });
       })
       .catch((error) => console.log(error));
@@ -123,23 +124,23 @@ function SettingsScreen() {
           setSettingState={setGameLevel}
         />
 
-        <SettingsItem
-          title="Color Mode"
-          settings={[
-            {
-              title: 'Light Mode',
-              description:
-                'It allows you to use the entire application and the game board in light colors.',
-            },
-            {
-              title: 'Dark Mode',
-              description:
-                'It allows you to use the entire application and the game board in dark colors.',
-            },
-          ]}
-          state={colorMode}
-          setSettingState={setColorMode}
-        />
+        {/*<SettingsItem*/}
+        {/*  title="Color Mode"*/}
+        {/*  settings={[*/}
+        {/*    {*/}
+        {/*      title: 'Light Mode',*/}
+        {/*      description:*/}
+        {/*        'It allows you to use the entire application and the game board in light colors.',*/}
+        {/*    },*/}
+        {/*    {*/}
+        {/*      title: 'Dark Mode',*/}
+        {/*      description:*/}
+        {/*        'It allows you to use the entire application and the game board in dark colors.',*/}
+        {/*    },*/}
+        {/*  ]}*/}
+        {/*  state={colorMode}*/}
+        {/*  setSettingState={setColorMode}*/}
+        {/*/>*/}
 
         <BlockButton func={saveSettings}>Save</BlockButton>
       </ScreenContainer>

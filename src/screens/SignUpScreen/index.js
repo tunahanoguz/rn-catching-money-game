@@ -39,9 +39,9 @@ function SignUpScreen({ navigation }) {
             username,
             email,
             createdAt: new Date(),
-            gameType: 'Online',
-            gameLevel: 'Medium',
-            colorMode: 'Light Mode',
+            gameType: 0,
+            gameLevel: 2,
+            // colorMode: 'Light Mode',
           };
           const userCollection = firestore().collection('Users');
           await userCollection.add(userData);
@@ -50,7 +50,7 @@ function SignUpScreen({ navigation }) {
         }
       })
       .then(() => {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('Home', { screen: 'HomeScreen' });
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
